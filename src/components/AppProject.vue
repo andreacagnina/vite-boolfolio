@@ -19,6 +19,7 @@ export default {
             });
         },
         goToPage(page) {
+            this.current_page = page;
             axios.get('http://127.0.0.1:8000/api/project', { params: { page: page } }).then((results) => {
                 this.projects = results.data.results.data;
             });
@@ -42,16 +43,21 @@ export default {
                     <div class="card-body">
                         <h5 class="card-title"><strong>Titolo:</strong> {{ project.name }}</h5>
                         <br>
-                        <p class="card-text"><strong>Descrizione:</strong> {{ project.description.substr(0, 300) +
-                            '[...]' }}
+                        <p class="card-text"><strong>Descrizione:</strong> {{ project.description }}
                         </p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item" v-if="project.type != null"><strong>Type: </strong>{{
                             project.type.name }}</li>
                         <li class="list-group-item" v-if="project.technologies.length > 0"><strong>Technology:
-                            </strong>{{
-                                project.technologies.name }}</li>
+                            </strong> <span v-for="technology in project.technologies" :key="technology.id">{{
+                                technology.name }} &nbsp;</span>
+                            <ul class="list-unstyled">
+                                <li>
+
+                                </li>
+                            </ul>
+                        </li>
                         <li class="list-group-item"><strong>Start: </strong>{{ project.start_date }}</li>
                         <li class="list-group-item" v-if="(project.end_date)"><strong>End: </strong>{{ project.end_date
                             }}
@@ -62,12 +68,12 @@ export default {
         </div>
         <div class="row">
             <div class="col-12">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination ms-auto">
-                        <li class="page-item"><a class="page-link" :class="current_page == 1 ? 'disable' : ''" href="#"
+                <nav aria-label="Page navigation example ">
+                    <ul class="pagination justify-content-center mt-3">
+                        <li class="page-item"><a class="page-link" :class="current_page == 1 ? 'disabled' : ''" href="#"
                                 @click="goToPage(current_page
                                     - 1)">Previous</a></li>
-                        <li class="page-item"><a class="page-link" :class="current_page == last_page ? 'disable' : ''"
+                        <li class="page-item"><a class="page-link" :class="current_page == last_page ? 'disabled' : ''"
                                 href="#" @click="goToPage(current_page
                                     + 1)">Next</a></li>
                     </ul>
@@ -79,6 +85,7 @@ export default {
 
 <style lang="scss" scoped>
 .card-text {
-    height: 250px
+    overflow: auto;
+    max-height: 250px;
 }
 </style>
