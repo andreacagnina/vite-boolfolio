@@ -13,10 +13,17 @@ export default {
     methods: {
         getProjects() {
             axios.get('http://127.0.0.1:8000/api/project').then((results) => {
-                this.projects = results.data.results;
+                this.projects = results.data.results.data;
+                this.last_page = results.data.results.last_page;
+                this.current_page = results.data.results.current_page;
             });
-        }
-    },
+        },
+        goToPage(page) {
+            axios.get('http://127.0.0.1:8000/api/project', { params: { page: page } }).then((results) => {
+                this.projects = results.data.results.data;
+            });
+        },
+    }
 }
 </script>
 
@@ -40,6 +47,11 @@ export default {
                         </p>
                     </div>
                     <ul class="list-group list-group-flush">
+                        <li class="list-group-item" v-if="project.type != null"><strong>Type: </strong>{{
+                            project.type.name }}</li>
+                        <li class="list-group-item" v-if="project.technologies.length > 0"><strong>Technology:
+                            </strong>{{
+                                project.technologies.name }}</li>
                         <li class="list-group-item"><strong>Start: </strong>{{ project.start_date }}</li>
                         <li class="list-group-item" v-if="(project.end_date)"><strong>End: </strong>{{ project.end_date
                             }}
@@ -48,11 +60,25 @@ export default {
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination ms-auto">
+                        <li class="page-item"><a class="page-link" :class="current_page == 1 ? 'disable' : ''" href="#"
+                                @click="goToPage(current_page
+                                    - 1)">Previous</a></li>
+                        <li class="page-item"><a class="page-link" :class="current_page == last_page ? 'disable' : ''"
+                                href="#" @click="goToPage(current_page
+                                    + 1)">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.card {
-    height: 650px;
+.card-text {
+    height: 250px
 }
 </style>
