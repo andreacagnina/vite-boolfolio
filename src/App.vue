@@ -13,7 +13,7 @@ export default {
 <template>
   <div>
     <AppProject />
-    <AppProjectCard />
+    <!-- <AppProjectCard /> -->
   </div>
 </template>
 
