@@ -24,11 +24,6 @@ export default {
                 <li class="list-group-item" v-if="project.technologies.length > 0"><strong>Technology:
                     </strong> <span v-for="technology in project.technologies" :key="technology.id">{{
                         technology.name }} &nbsp;</span>
-                    <ul class="list-unstyled">
-                        <li>
-
-                        </li>
-                    </ul>
                 </li>
                 <li class="list-group-item"><strong>Start: </strong>{{ project.start_date }}</li>
                 <li class="list-group-item" v-if="(project.end_date)"><strong>End: </strong>{{ project.end_date
