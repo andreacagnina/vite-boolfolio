@@ -1,8 +1,14 @@
 <script>
+import { store } from '../store.js';
 export default {
     name: 'AppProjectCard',
     props: {
         project: Object
+    },
+    data() {
+        return {
+            store,
+        }
     }
 }
 </script>
@@ -10,7 +16,7 @@ export default {
 <template>
     <div class="col-3 gy-4">
         <div class="card" style="width: 18rem;">
-            <img :src="project.cover_project_image.startsWith('http') ? project.cover_project_image : `http://127.0.0.1:8000/storage/${project.cover_project_image}`"
+            <img :src="project.cover_project_image.startsWith('http') ? project.cover_project_image : `${store.baseUrl}/storage/${project.cover_project_image}`"
                 class="card-img-top" alt="Project img">
             <div class="card-body">
                 <h5 class="card-title"><strong>Titolo:</strong> {{ project.name.substr(0, 15) + '[...]' }}</h5>
