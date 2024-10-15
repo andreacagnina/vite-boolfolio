@@ -51,10 +51,10 @@ export default {
                 <nav aria-label="Page navigation example ">
                     <ul class="pagination justify-content-center mt-3">
                         <li class="page-item"><a class="page-link" :class="current_page == 1 ? 'disabled' : ''" href="#"
-                                @click="goToPage(current_page
+                                @click.prevent="goToPage(current_page
                                     - 1)">Previous</a></li>
                         <li class="page-item"><a class="page-link" :class="current_page == last_page ? 'disabled' : ''"
-                                href="#" @click="goToPage(current_page
+                                href="#" @click.prevent="goToPage(current_page
                                     + 1)">Next</a></li>
                     </ul>
                 </nav>
