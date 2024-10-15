@@ -8,7 +8,7 @@ export default {
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="text-center">Contact Us</h2>
+                    <h2 class="text-center">Contact Me</h2>
                 </div>
             </div>
             <form class="mt-4">
