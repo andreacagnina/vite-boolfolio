@@ -7,8 +7,8 @@ export const store = reactive({
             label: 'Home'
         },
         {
-            name: 'projects',
-            label: 'Projects'
+            name: 'portfolio',
+            label: 'Portfolio'
         },
     ]
 });
