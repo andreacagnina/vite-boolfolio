@@ -10,9 +10,8 @@ export default {
 </script>
 
 <template>
-  <div>
-    <AppProject />
-  </div>
+  <AppProject />
+  <router-view></router-view>
 </template>
 
 <style lang="scss">
