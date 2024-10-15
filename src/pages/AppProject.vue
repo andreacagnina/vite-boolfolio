@@ -39,15 +39,12 @@ export default {
 </script>
 
 <template>
-    <section>
+    <section class="py-5">
         <div class="container mt-3">
             <div class="row">
                 <div class="col-12">
-                    <h1>Elenco dei projects</h1>
+                    <h2 class="text-center">Elenco dei miei Projects</h2>
                 </div>
-            </div>
-            <div class="row">
-                <AppProjectCard v-for="project in projects" :key="project.id" :project="project" />
             </div>
             <div class="row">
                 <div class="col-12">
@@ -62,6 +59,9 @@ export default {
                         </ul>
                     </nav>
                 </div>
+            </div>
+            <div class="row">
+                <AppProjectCard v-for="project in projects" :key="project.id" :project="project" />
             </div>
         </div>
     </section>
