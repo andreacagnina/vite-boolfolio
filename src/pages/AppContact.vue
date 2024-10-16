@@ -4,8 +4,8 @@ export default {
 }
 </script>
 <template>
-    <section id="contact" class="py-5">
-        <div class="container">
+    <section id="contact">
+        <div class="container my-3">
             <div class="row">
                 <div class="col-12">
                     <h2 class="text-center">Contact Me</h2>

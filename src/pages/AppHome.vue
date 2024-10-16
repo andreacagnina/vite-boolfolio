@@ -8,7 +8,7 @@ export default {
 <template>
     <section class="d-flex justify-content-center align-items-center flex-column">
         <div class="box bg-dark">
-            <h1 class="display-4">Benvenuto nel mio Portfolio</h1>
+            <h1 class="display-4">Benvenuti nel mio Portfolio</h1>
         </div>
         <div class="blur-box bg-dark">
         </div>
