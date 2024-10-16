@@ -13,7 +13,7 @@ export default {
 <template>
     <div class="row">
         <div class="col-12">
-            <nav aria-label="Page navigation example ">
+            <nav aria-label="Page navigation example z-0">
                 <ul class="pagination justify-content-center mt-3">
                     <li class="page-item"><a class="page-link" :class="store.current_page == 1 ? 'disabled' : ''"
                             href="#" @click.prevent="store.goToPage(store.current_page

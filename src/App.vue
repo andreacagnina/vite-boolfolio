@@ -23,11 +23,11 @@ export default {
 @use './styles/generals.scss';
 
 header {
-  height: 55px;
+  height: 64px;
 }
 
 main {
-  height: calc(100vh - 143px);
+  height: calc(100vh - 152px);
 }
 
 footer {

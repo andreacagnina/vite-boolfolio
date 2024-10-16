@@ -22,7 +22,7 @@ export default {
 
 <template>
     <section>
-        <div class="container my-3">
+        <div class="container my-5 my-lg-3">
             <div class="row">
                 <div class="col-12">
                     <h2 class="text-center">Elenco dei miei Projects</h2>

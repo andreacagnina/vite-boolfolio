@@ -5,7 +5,7 @@ export default {
 </script>
 <template>
     <section id="contact">
-        <div class="container my-3">
+        <div class="container my-5 my-lg-3">
             <div class="row">
                 <div class="col-12">
                     <h2 class="text-center">Contact Me</h2>
@@ -13,7 +13,7 @@ export default {
             </div>
             <form class="mt-4">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-12 col-md-3">
                         <div class="form-group">
                             <label for="name">
                                 <h6>Nome</h6>
@@ -23,7 +23,7 @@ export default {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-12 col-md-3">
                         <div class="form-group">
                             <label for="email">
                                 <h6>Email</h6>

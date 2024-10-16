@@ -10,19 +10,24 @@ export default {
 </script>
 <template>
     <header>
-        <nav class="navbar navbar-light bg-white shadow-sm">
-            <div class="nav-item mx-5">
-                <router-link :to="{ name: 'homepage' }">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm z-1">
+            <div class="container-fluid">
+                <router-link :to="{ name: 'homepage' }" class="navbar-brand mx-5 d-flex align-items-center">
                     <img src="../assets/animal-2028258_960_720.webp" alt="logo" class="logo">
                     <span class="mx-3">Home</span>
                 </router-link>
-            </div>
-            <div class="nav-item mx-5">
-                <ul class="navbar-nav d-flex flex-row">
-                    <li class="nav-item mx-3" v-for="(item, index) in store.menuItems" :key="`menu-${index}`">
-                        <router-link :to="{ name: item.name }">{{ item.label }}</router-link>
-                    </li>
-                </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx ms-lg-auto ">
+                        <li class="nav-item mx-lg-3 py-2" v-for="(item, index) in store.menuItems"
+                            :key="`menu-${index}`">
+                            <router-link :to="{ name: item.name }">{{ item.label }}</router-link>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -35,5 +40,14 @@ export default {
 
 a:hover {
     color: gray;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.mx {
+    margin-left: 115px;
 }
 </style>

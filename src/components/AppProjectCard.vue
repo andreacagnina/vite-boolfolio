@@ -14,8 +14,8 @@ export default {
 </script>
 
 <template>
-    <div class="col-3 gy-4">
-        <div class="card" style="width: 18rem;">
+    <div class="col-12 col-md-3 gy-4">
+        <div class="card">
             <img :src="project.cover_project_image.startsWith('http') ? project.cover_project_image : `${store.baseUrl}/storage/${project.cover_project_image}`"
                 class="card-img-top" alt="Project img">
             <div class="card-body">
