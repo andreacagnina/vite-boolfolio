@@ -54,9 +54,15 @@ export default {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{ project.types ? project.types.name : 'NC' }}</td>
+                                        <td>{{ project.type ? project.type.name : 'NC' }}</td>
                                         <td>
-                                            {{ project.technologies ? project.technologies.name : 'NC' }}
+                                            <ul class="list-unstyled mb-0">
+                                                <li v-if="project.technologies.length > 0"
+                                                    v-for="technology in project.technologies" :key="technology.id"> {{
+                                                        technology.name }}
+                                                </li>
+                                                <li v-else>NC</li>
+                                            </ul>
                                         </td>
                                         <td>{{ project.name }}</td>
                                         <td>{{ project.description }}</td>
