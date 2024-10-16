@@ -1,13 +1,16 @@
 <script>
 import AppProjectCard from '../components/AppProjectCard.vue';
 import AppPagination from '../components/AppPagination.vue';
+import AppLoader from '../components/AppLoader.vue';
 import { store } from '../store.js';
+
 
 export default {
     name: 'AppProjects',
     components: {
         AppProjectCard,
         AppPagination,
+        AppLoader,
     },
     data() {
         return {
@@ -21,7 +24,8 @@ export default {
 </script>
 
 <template>
-    <section>
+    <AppLoader v-if="store.success" />
+    <section v-else>
         <div class="container my-5 my-lg-3">
             <div class="row">
                 <div class="col-12">
