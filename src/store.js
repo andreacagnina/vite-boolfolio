@@ -25,17 +25,17 @@ export const store = reactive({
     },
 
     menuItems: [
-        {
-            name: 'homepage',
-            label: 'Home'
-        },
+        // {
+        //     name: 'homepage',
+        //     label: 'Home'
+        // },
         {
             name: 'portfolio',
             label: 'Portfolio'
         },
         {
             name: 'contact',
-            label: 'Contact'
+            label: 'Contact Me'
         },
     ]
 });
