@@ -13,17 +13,21 @@ export default {
             </div>
             <form class="mt-4">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-3">
                         <div class="form-group">
-                            <label for="name">Nome</label>
+                            <label for="name">
+                                <h6>Nome</h6>
+                            </label>
                             <input type="text" class="form-control" id="name" placeholder="Inserisci il tuo nome">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-3">
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">
+                                <h6>Email</h6>
+                            </label>
                             <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email">
                         </div>
                     </div>
@@ -31,8 +35,10 @@ export default {
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="message">Messaggio</label>
-                            <textarea class="form-control" id="message" rows="3"
+                            <label for="message">
+                                <h6>Messaggio</h6>
+                            </label>
+                            <textarea class="form-control" id="message" rows="10"
                                 placeholder="Scrivi il tuo messaggio"></textarea>
                         </div>
                     </div>

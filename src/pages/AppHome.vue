@@ -29,7 +29,7 @@ export default {
 }
 
 .box {
-    height: 10%;
+    height: 15%;
     width: 1200px;
     background-color: rgba(53, 52, 52, 0.699);
     border-radius: 15px 15px 0 0;
