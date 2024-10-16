@@ -12,13 +12,6 @@ export default {
         const slug = this.$route.params.slug;
         store.getProject(slug);
     },
-    methods: {
-        // getProject() {
-        //     axios.get(`${store.baseUrl}api/project/${this.$route.params.slug}`).then((results) => {
-        //         this.project = results.data.results;
-        //     })
-        // },
-    },
     computed: {
         project() {
             return store.project;

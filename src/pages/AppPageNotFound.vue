@@ -1,0 +1,15 @@
+<script>
+export default {
+
+}
+</script>
+<template>
+    <section class="d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <h1>404 - Pagina Non Trovata</h1>
+            <p>La pagina che stai cercando non esiste.</p>
+            <router-link to="/">Torna alla Home</router-link>
+        </div>
+    </section>
+</template>
+<style lang="scss" scoped></style>
