@@ -1,39 +1,98 @@
 <script>
-import AppProjectCard from '../components/AppProjectCard.vue';
-import AppPagination from '../components/AppPagination.vue';
 import { store } from '../store.js';
-
 export default {
     name: 'AppProject',
-    components: {
-        AppProjectCard,
-        AppPagination,
-    },
     data() {
         return {
             store,
+
         }
     },
     created() {
-        store.getProjects();
+        const slug = this.$route.params.slug;
+        store.getProject(slug);
     },
+    methods: {
+        // getProject() {
+        //     axios.get(`${store.baseUrl}api/project/${this.$route.params.slug}`).then((results) => {
+        //         this.project = results.data.results;
+        //     })
+        // },
+    },
+    computed: {
+        project() {
+            return store.project;
+        }
+    }
 }
 </script>
 
 <template>
-    <section>
+    <section v-if="project">
         <div class="container my-5 my-lg-3">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="text-center">Elenco dei miei Projects</h2>
+                    <div class="content w-h-cust">
+                        <img :src="project.cover_project_image.startsWith('http') ? project.cover_project_image : `${store.baseUrl}/storage/${project.cover_project_image}`"
+                            class="card-img-top" alt="Project img">
+                    </div>
                 </div>
-            </div>
-            <AppPagination />
-            <div class="row">
-                <AppProjectCard v-for="project in store.projects" :key="project.id" :project="project" />
+                <div class="row">
+                    <div class="col-12">
+                        <div class="content">
+                            <table class="table table-bordered align-middle table-sm mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Categoria</th>
+                                        <th>Technology</th>
+                                        <th>Nome</th>
+                                        <th>Descrizione</th>
+                                        <th>Inizio</th>
+                                        <th>Fine</th>
+                                        <th>Tools</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ project.types ? project.types.name : 'NC' }}</td>
+                                        <td>
+                                            {{ project.technologies ? project.technologies.name : 'NC' }}
+                                        </td>
+                                        <td>{{ project.name }}</td>
+                                        <td>{{ project.description }}</td>
+                                        <td>{{ project.start_date }}</td>
+                                        <td>{{ project.end_date }}</td>
+                                        <td>
+                                            <div class="d-flex justify-content-center">
+                                                <router-link :to="{ name: 'portfolio' }">
+                                                    <i class="fa-solid fa-backward"></i>
+                                                </router-link>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.w-h-cust {
+    width: 600px;
+    height: 400px;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+th,
+td {
+    text-align: center;
+}
+</style>

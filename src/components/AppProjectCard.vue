@@ -14,17 +14,19 @@ export default {
 </script>
 
 <template>
-    <div class="col-12 col-md-3 gy-4">
-        <div class="card">
+    <div class="col">
+        <div class="card h-100">
             <img :src="project.cover_project_image.startsWith('http') ? project.cover_project_image : `${store.baseUrl}/storage/${project.cover_project_image}`"
                 class="card-img-top" alt="Project img">
             <div class="card-body">
                 <h5 class="card-title">
-                    <h6><strong>Titolo:</strong></h6> {{ project.name.substr(0, 20) + '[...]' }}
+                    <h6><strong>Titolo:</strong></h6> {{ project.name }}
                 </h5>
                 <br>
                 <p class="card-text">
-                <h6><strong>Descrizione:</strong></h6> {{ project.description }}
+                <h6><strong>Descrizione:</strong></h6> {{ project.description.substr(0, 300) +
+                    '[...]'
+                }}
                 </p>
             </div>
             <ul class="list-group list-group-flush">
@@ -37,20 +39,20 @@ export default {
                         technology.name }} &nbsp;</span>
                 </li>
                 <li class="list-group-item">
-                    <h6><strong>Start: </strong></h6>{{ project.start_date }}
+                    <h6><strong>Inizio: </strong></h6>{{ project.start_date }}
                 </li>
                 <li class="list-group-item" v-if="(project.end_date)">
-                    <h6><strong>End: </strong></h6>{{ project.end_date
+                    <h6><strong>Fine: </strong></h6>{{ project.end_date
                     }}
+                </li>
+                <li class="list-group-item text-center">
+                    <router-link :to="{ name: 'project', params: { slug: project.slug } }" class="btn btn-primary">
+                        Scopri di più
+                    </router-link>
                 </li>
             </ul>
         </div>
     </div>
 </template>
 
-<style lang="scss" scoped>
-.card-text {
-    overflow: auto;
-    max-height: 200px;
-}
-</style>
+<style lang="scss" scoped></style>
