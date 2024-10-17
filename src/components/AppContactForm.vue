@@ -1,8 +1,13 @@
 <script>
 import { store } from '../store.js';
 import axios from 'axios';
+import AppConfirmModal from './AppConfirmModal.vue';
+
 export default {
     name: 'AppContactForm',
+    components: {
+        AppConfirmModal,
+    },
     data() {
         return {
             name: '',
@@ -11,7 +16,7 @@ export default {
             message: '',
             loading: false,
             success: false,
-            errors: '',
+            errors: {},
         }
     },
     methods: {
@@ -26,17 +31,23 @@ export default {
             this.errors = {};
 
             axios.post(`${store.baseUrl}/api/contacts`, data).then((results) => {
+                console.log(results)
                 if (results.data.success) {
                     this.name = '';
                     this.surname = '';
                     this.email = '';
                     this.message = '';
                     this.success = true;
+                    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                    successModal.show();
                 }
                 else {
                     this.errors = results.data.errors;
                 }
                 this.loading = false;
+            }).catch((errors) => {
+                this.loading = false;
+                this.errors = errors.response.data.errors
             });
         }
     },
@@ -99,7 +110,7 @@ export default {
             </div>
         </div>
     </form>
-    <div class="alert alert-success" v-if="success">Messaggio inviato</div>
+    <AppConfirmModal />
 </template>
 
 <style lang="scss" scoped></style>
