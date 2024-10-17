@@ -1,8 +1,14 @@
 <script>
+import { store } from '../store.js';
 import AppContactForm from '../components/AppContactForm.vue';
 
 export default {
     name: 'AppContact',
+    data() {
+        return {
+            store,
+        }
+    },
     components: {
         AppContactForm,
     }

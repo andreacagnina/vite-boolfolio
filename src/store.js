@@ -11,6 +11,13 @@ export const store = reactive({
     project: null,
     success: false,
 
+    name: '',
+    surname: '',
+    email: '',
+    message: '',
+    loading: false,
+    errors: {},
+
     getProjects() {
         this.success = true;
         axios.get(`${this.baseUrl}/api/projects`).then((results) => {
@@ -39,6 +46,45 @@ export const store = reactive({
         }).finally(() => {
             this.success = false;
         });;
+    },
+    sendForm() {
+        this.loading = true;
+        const data = {
+            name: this.name,
+            surname: this.surname,
+            email: this.email,
+            message: this.message,
+        };
+        this.errors = {};
+
+        axios.post(`${this.baseUrl}/api/contacts`, data).then((results) => {
+            console.log(results)
+            if (results.data.success) {
+                this.name = '';
+                this.surname = '';
+                this.email = '';
+                this.message = '';
+                this.success = true;
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+            }
+            else {
+                this.errors = results.data.errors;
+            }
+            this.loading = false;
+        }).catch((errors) => {
+            this.loading = false;
+            this.errors = errors.response.data.errors
+        });
+    },
+    resetForm() {
+        this.name = '';
+        this.surname = '';
+        this.email = '';
+        this.message = '';
+        this.errors = {};
+        this.success = false;
+        this.loading = false;
     },
 
     menuItems: [
