@@ -30,7 +30,7 @@ export default {
                     <input type="text" class="form-control" :class="store.errors.name ? 'is-invalid' : ''"
                         v-model="store.name" id="name" placeholder="Inserisci il tuo nome">
                 </div>
-                <p v-for="(error, index) in store.errors.name" :key="`message-${index}`" class="text-danger"> {{ error
+                <p v-for="(error, index) in store.errors.name" :key="`name-${index}`" class="text-danger"> {{ error
                     }}</p>
             </div>
 
@@ -42,7 +42,7 @@ export default {
                     <input type="text" class="form-control" :class="store.errors.surname ? 'is-invalid' : ''"
                         v-model="store.surname" id="surname" placeholder="Inserisci il tuo cognome">
                 </div>
-                <p v-for="(error, index) in store.errors.surname" :key="`message-${index}`" class="text-danger"> {{
+                <p v-for="(error, index) in store.errors.surname" :key="`surname-${index}`" class="text-danger"> {{
                     error }}
                 </p>
             </div>
@@ -55,7 +55,7 @@ export default {
                     <input type="email" class="form-control" :class="store.errors.email ? 'is-invalid' : ''"
                         v-model="store.email" id="email" placeholder="Inserisci la tua email">
                 </div>
-                <p v-for="(error, index) in store.errors.email" :key="`message-${index}`" class="text-danger"> {{ error
+                <p v-for="(error, index) in store.errors.email" :key="`email-${index}`" class="text-danger"> {{ error
                     }}</p>
             </div>
 
